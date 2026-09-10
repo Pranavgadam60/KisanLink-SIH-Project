@@ -1,0 +1,630 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KisanLink</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+
+    <div class="logo">
+        🌾 Kisan<span>Link</span>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#marketplace">Marketplace</a>
+        <a href="#farmer">Farmer</a>
+        <a href="#logistics">Logistics</a>
+    </nav>
+
+    <button class="login-btn" onclick="openLogin()">
+        Login
+    </button>
+
+</header>
+
+
+<!-- HERO -->
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+        <p class="small-title">
+            🌱 FARMER TO BUYER PLATFORM
+        </p>
+
+        <h1>
+            Connecting Farmers<br>
+            Directly With Buyers
+        </h1>
+
+        <p>
+            KisanLink helps farmers and FPOs sell agricultural
+            products directly to consumers and bulk buyers.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="primary-btn"
+                    onclick="scrollToMarketplace()">
+                Explore Marketplace
+            </button>
+
+            <button class="secondary-btn"
+                    onclick="showSection('farmer')">
+                Sell Your Products
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="hero-card">
+
+        <div class="farmer-icon">👨‍🌾</div>
+
+        <h3>Farmer</h3>
+
+        <p>List your fresh agricultural products.</p>
+
+        <div class="arrow">→</div>
+
+        <div class="buyer-icon">🛒</div>
+
+        <h3>Buyer</h3>
+
+        <p>Find products at competitive prices.</p>
+
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+<section class="stats">
+
+    <div>
+        <h2>500+</h2>
+        <p>Farmers</p>
+    </div>
+
+    <div>
+        <h2>1200+</h2>
+        <p>Products</p>
+    </div>
+
+    <div>
+        <h2>300+</h2>
+        <p>Buyers</p>
+    </div>
+
+    <div>
+        <h2>25+</h2>
+        <p>Locations</p>
+    </div>
+
+</section>
+
+
+<!-- MARKETPLACE -->
+<section id="marketplace" class="section">
+
+    <div class="section-heading">
+
+        <p class="small-title">MARKETPLACE</p>
+
+        <h2>Fresh Products From Farmers</h2>
+
+        <p>
+            Buy directly from farmers and FPOs.
+        </p>
+
+    </div>
+
+
+    <div class="search-area">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search vegetables, fruits, grains..."
+            onkeyup="searchProducts()">
+
+        <select id="categoryFilter"
+                onchange="filterProducts()">
+
+            <option value="all">All Categories</option>
+            <option value="vegetables">Vegetables</option>
+            <option value="fruits">Fruits</option>
+            <option value="grains">Grains</option>
+
+        </select>
+
+    </div>
+
+
+    <div class="products" id="productContainer">
+
+        <!-- PRODUCT 1 -->
+
+        <div class="product-card"
+             data-category="vegetables"
+             data-name="tomato">
+
+            <div class="product-image tomato">
+                🍅
+            </div>
+
+            <div class="product-info">
+
+                <span class="tag">Vegetables</span>
+
+                <h3>Fresh Tomato</h3>
+
+                <p>👨‍🌾 Farmer: Rajesh FPO</p>
+
+                <p>📍 Pune, Maharashtra</p>
+
+                <p>Available: <b>500 kg</b></p>
+
+                <div class="product-bottom">
+
+                    <strong>₹35 / kg</strong>
+
+                    <button onclick="buyProduct('Fresh Tomato')">
+                        Buy
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="product-card"
+             data-category="vegetables"
+             data-name="potato">
+
+            <div class="product-image potato">
+                🥔
+            </div>
+
+            <div class="product-info">
+
+                <span class="tag">Vegetables</span>
+
+                <h3>Fresh Potato</h3>
+
+                <p>👨‍🌾 Farmer: Green Valley FPO</p>
+
+                <p>📍 Nashik, Maharashtra</p>
+
+                <p>Available: <b>800 kg</b></p>
+
+                <div class="product-bottom">
+
+                    <strong>₹28 / kg</strong>
+
+                    <button onclick="buyProduct('Fresh Potato')">
+                        Buy
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 3 -->
+
+        <div class="product-card"
+             data-category="fruits"
+             data-name="mango">
+
+            <div class="product-image mango">
+                🥭
+            </div>
+
+            <div class="product-info">
+
+                <span class="tag">Fruits</span>
+
+                <h3>Alphonso Mango</h3>
+
+                <p>👨‍🌾 Farmer: Konkan FPO</p>
+
+                <p>📍 Ratnagiri, Maharashtra</p>
+
+                <p>Available: <b>300 kg</b></p>
+
+                <div class="product-bottom">
+
+                    <strong>₹180 / kg</strong>
+
+                    <button onclick="buyProduct('Alphonso Mango')">
+                        Buy
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 4 -->
+
+        <div class="product-card"
+             data-category="grains"
+             data-name="wheat">
+
+            <div class="product-image wheat">
+                🌾
+            </div>
+
+            <div class="product-info">
+
+                <span class="tag">Grains</span>
+
+                <h3>Wheat</h3>
+
+                <p>👨‍🌾 Farmer: Shakti FPO</p>
+
+                <p>📍 Ahmednagar, Maharashtra</p>
+
+                <p>Available: <b>1500 kg</b></p>
+
+                <div class="product-bottom">
+
+                    <strong>₹32 / kg</strong>
+
+                    <button onclick="buyProduct('Wheat')">
+                        Buy
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BULK BUYER -->
+<section class="bulk-section">
+
+    <div>
+
+        <p class="small-title">FOR BULK BUYERS</p>
+
+        <h2>Need Large Quantities?</h2>
+
+        <p>
+            Restaurants, retailers and food-processing companies
+            can post their requirements and connect with suitable
+            farmers and FPOs.
+        </p>
+
+    </div>
+
+    <button class="primary-btn"
+            onclick="openRequirement()">
+        Post Requirement
+    </button>
+
+</section>
+
+
+<!-- FARMER -->
+<section id="farmer" class="section farmer-section">
+
+    <div class="section-heading">
+
+        <p class="small-title">FOR FARMERS & FPOS</p>
+
+        <h2>Sell Your Products</h2>
+
+        <p>
+            Add your agricultural products and reach more buyers.
+        </p>
+
+    </div>
+
+
+    <form class="farmer-form"
+          onsubmit="addProduct(event)">
+
+        <div class="form-row">
+
+            <div>
+                <label>Product Name</label>
+
+                <input type="text"
+                       id="productName"
+                       placeholder="e.g. Tomato"
+                       required>
+            </div>
+
+            <div>
+                <label>Quantity (kg)</label>
+
+                <input type="number"
+                       id="productQuantity"
+                       placeholder="e.g. 500"
+                       required>
+            </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+            <div>
+                <label>Price per kg</label>
+
+                <input type="number"
+                       id="productPrice"
+                       placeholder="₹ Price"
+                       required>
+            </div>
+
+            <div>
+                <label>Location</label>
+
+                <input type="text"
+                       id="productLocation"
+                       placeholder="e.g. Pune"
+                       required>
+            </div>
+
+        </div>
+
+
+        <button class="primary-btn"
+                type="submit">
+            List Product
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- LOGISTICS -->
+<section id="logistics" class="section logistics-section">
+
+    <div class="section-heading">
+
+        <p class="small-title">SMART LOGISTICS</p>
+
+        <h2>Efficient Pickup & Delivery</h2>
+
+        <p>
+            KisanLink helps plan efficient routes between farmers
+            and buyers.
+        </p>
+
+    </div>
+
+
+    <div class="logistics-box">
+
+        <div class="location-box">
+
+            <span>📍</span>
+
+            <div>
+                <small>Pickup</small>
+                <h3>Pune Farmer</h3>
+            </div>
+
+        </div>
+
+
+        <div class="route-line">
+
+            <span>🚚</span>
+
+        </div>
+
+
+        <div class="location-box">
+
+            <span>🏢</span>
+
+            <div>
+                <small>Delivery</small>
+                <h3>Pimpri Buyer</h3>
+            </div>
+
+        </div>
+
+
+        <div class="route-result">
+
+            <h3>Route Information</h3>
+
+            <p>Distance: <b id="distance">--</b></p>
+
+            <p>Estimated Time: <b id="duration">--</b></p>
+
+            <button class="primary-btn"
+                    onclick="calculateRoute()">
+
+                Calculate Route
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- AI -->
+<section class="ai-section">
+
+    <div>
+
+        <p class="small-title">AI / ML</p>
+
+        <h2>Smart Agricultural Planning</h2>
+
+        <p>
+            KisanLink can use historical order data to forecast
+            demand and help farmers plan production.
+        </p>
+
+    </div>
+
+
+    <div class="ai-cards">
+
+        <div class="ai-card">
+
+            <div>📈</div>
+
+            <h3>Demand Forecasting</h3>
+
+            <p>
+                Predict future demand using historical orders.
+            </p>
+
+        </div>
+
+
+        <div class="ai-card">
+
+            <div>🗺️</div>
+
+            <h3>Route Optimization</h3>
+
+            <p>
+                Find efficient pickup and delivery routes.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="logo">
+        🌾 Kisan<span>Link</span>
+    </div>
+
+    <p>
+        Connecting Farmers. Empowering Buyers.
+    </p>
+
+    <p class="copyright">
+        © 2026 KisanLink
+    </p>
+
+</footer>
+
+
+<!-- LOGIN MODAL -->
+
+<div class="modal"
+     id="loginModal">
+
+    <div class="modal-content">
+
+        <button class="close"
+                onclick="closeLogin()">
+            ×
+        </button>
+
+        <h2>Login to KisanLink</h2>
+
+        <p>Select your role</p>
+
+        <select id="loginRole">
+
+            <option>Farmer / FPO</option>
+            <option>Consumer</option>
+            <option>Bulk Buyer</option>
+
+        </select>
+
+        <input type="email"
+               placeholder="Email">
+
+        <input type="password"
+               placeholder="Password">
+
+        <button class="primary-btn"
+                onclick="login()">
+            Login
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- BULK REQUIREMENT MODAL -->
+
+<div class="modal"
+     id="requirementModal">
+
+    <div class="modal-content">
+
+        <button class="close"
+                onclick="closeRequirement()">
+            ×
+        </button>
+
+        <h2>Post Bulk Requirement</h2>
+
+        <input id="requirementProduct"
+               placeholder="Product">
+
+        <input id="requirementQuantity"
+               type="number"
+               placeholder="Required Quantity (kg)">
+
+        <input id="requirementPrice"
+               type="number"
+               placeholder="Expected Price / kg">
+
+        <input id="requirementDate"
+               type="date">
+
+        <button class="primary-btn"
+                onclick="submitRequirement()">
+            Submit Requirement
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
